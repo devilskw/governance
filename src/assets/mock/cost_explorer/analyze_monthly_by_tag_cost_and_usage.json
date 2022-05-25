@@ -1,0 +1,45 @@
+{
+    "NextPageToken": "string",
+    "GroupDefinitions": [
+        {
+            "Type": "DIMENSION",
+            "Key": "string"
+        }
+    ],
+    "ResultsByTime": [
+        {
+            "TimePeriod": {
+                "Start": "string",
+                "End": "string"
+            },
+            "Total": {
+                "string": {
+                    "Amount": "string",
+                    "Unit": "string"
+                }
+            },
+            "Groups": [
+                {
+                    "Keys": [
+                        "string"
+                    ],
+                    "Metrics": {
+                        "string": {
+                            "Amount": "string",
+                            "Unit": "string"
+                        }
+                    }
+                }
+            ],
+            "Estimated": false
+        }
+    ],
+    "DimensionValueAttributes": [
+        {
+            "Value": "string",
+            "Attributes": {
+                "string": "string"
+            }
+        }
+    ]
+}

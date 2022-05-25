@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  localstack:
+    container_name: "localstack_governance"
+    image: localstack/localstack
+    network_mode: bridge
+    ports:
+      - "127.0.0.1:53:53"                # only required for Pro (DNS)
+      - "127.0.0.1:53:53/udp"            # only required for Pro (DNS)
+      - "127.0.0.1:443:443"              # only required for Pro (LocalStack HTTPS Edge Proxy)
+      - "127.0.0.1:4510-4559:4510-4559"  # external service port range
+      - "127.0.0.1:4566:4566"            # LocalStack Edge Proxy
+    environment:
+      - DEBUG=${DEBUG-:1}
+      - DATA_DIR=${DATA_DIR-:/tmp/localstack/data}
+      - DEFAULT_REGION=sa-east-1
+      - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR-}
+#      - LOCALSTACK_API_KEY=${LOCALSTACK_API_KEY-}  # only required for Pro
+      - HOST_TMP_FOLDER=${TMPDIR:-/tmp/}localstack
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - SERVICES=ce,s3
+#      - SERVICES=apigateway,apigatewaymanagementapi,apigatewayv2,appconfig,appconfigdata,appflow,appintegrations,application-autoscaling,application-insights,applicationcostprofiler,appmesh,apprunner,appstream,appsync,athena,autoscaling,autoscaling-plans,backup,backup-gateway,batch,budgets,cloudformation,cloudfront,cloudtrail,cloudwatch,codeartifact,codebuild,codecommit,codepipeline,comprehend,deploy,dynamodb,dynamodbstreams,ebs,ec2,ec2-instance-connect,ecr,ecr-public,ecs,efs,elasticache,elb,elbv2,emr,emr-containers,glacier,globalaccelerator,glue,guardduty,iam,kafka,kafkaconnect,kinesis,kinesis-video-archived-media,kinesis-video-media,kinesis-video-signaling,kinesisanalytics,kinesisanalyticsv2,kinesisvideo,kms,lakeformation,lambda,logs,machinelearning,memorydb,neptune,network-firewall,networkmanager,organizations,quicksight,rds,rds-data,redshift,redshift-data,resource-groups,resourcegroupstaggingapi,route53,route53-recovery-cluster,route53-recovery-control-config,route53-recovery-readiness,route53domains,route53resolver,s3,s3api,s3control,s3outposts,sagemaker,sagemaker-a2i-runtime,sagemaker-edge,sagemaker-featurestore-runtime,sagemaker-runtime,savingsplans,schemas,secretsmanager,securityhub,serverlessrepo,service-quotas,servicecatalog,servicecatalog-appregistry,servicediscovery,sms,sns,sqs,ssm,ssm-contacts,ssm-incidents,sso,sso-admin,sso-oidc,stepfunctions,storagegateway,sts,support,waf,waf-regional,wafv2,wellarchitected,workspaces,workspaces-web,xray,ce
+      - EDGE_PORT=4566
+      - HOSTNAME=localhost
+      - HOSTNAME_EXTERNAL=localhost
+      - PORT_WEB_UI=8080
+    volumes:
+      - "${TMPDIR:-/tmp}/localstack:/tmp/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"

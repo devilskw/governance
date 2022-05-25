@@ -1,0 +1,25 @@
+{
+    // Use o IntelliSense para saber mais sobre os atributos possíveis.
+    // Focalizar para exibir as descrições dos atributos existentes.
+    // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Arquivo Atual",
+            "type": "python",
+            "request": "launch",
+            "program": "./src/main.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "LOCAL_ENVIRONMENT": "true",
+                "ENDPOINT_URL": "http://localhost:4566",
+                "DEBUG": "true",
+                "PROXIES": "",
+                "MAX_RETRIES": "3",
+                "REQUIRED_TAG_KEYS": "squad,project,email",
+                "AWS_ACCOUNTS": "[{ \"name\": \"ContaAWSKazuo\",  \"id\": \"123456\", \"profile_prefix\": \"DEVELOPER_ACCESS\", \"type\": \"dev\"}]"
+            }
+        }
+    ]
+}
